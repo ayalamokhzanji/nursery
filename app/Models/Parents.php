@@ -13,4 +13,9 @@ class Parents extends Model
     use Notifiable;
     use SoftDeletes;
     protected $guarded =[];
+    
+    public function email()
+    {
+        return  $this->hasMany('App\Models\Email'); 
+    }
 }

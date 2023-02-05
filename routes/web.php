@@ -34,7 +34,8 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::get('/general/email/create',[EmailController::class,'create'])->name('email.create');
     Route::get('/general/email',[EmailController::class,'index'])->name('email.index');
     Route::post('/general/email',[EmailController::class,'store'])->name('email.store');
-    
+    Route::get('/users-send-email', [EmailController::class, 'allParentStore'])->name('ajax.send.email');
+
     Route::get('parents/restore/{id}', [ParentsController::class, 'restore'])
     ->name('parents.restore');
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])

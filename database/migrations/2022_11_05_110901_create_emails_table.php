@@ -17,6 +17,8 @@ return new class extends Migration
             $table->increments('id');
             $table->string('subject');
             $table->text('content');
+            $table->integer('parent_id')->unsigned();
+            $table->foreign('parent_id')->references('id')->on('parents')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -7,6 +7,21 @@
 
 
         <form  @submit.prevent="form.post('/general/email')" class=" py-4 my-7 w-full">
+
+        <div class="flex flex-wrap -mx-3 mb-6">
+          <div class="w-full  px-3 mb-6 md:mb-0">
+            <select   
+           class="  block  appearance-none  w-full  bg-gray-50  border border-gray-200  
+             text-gray-700  py-3  px-4  pr-8  rounded  leading-tight  focus:outline-none focus:bg-white
+              focus:border-gray-500" id="grid-productType"  v-model="form.parent_id">
+                 <option v-for="parent in parents.data" :key="parent.id" :value="parent.id">
+                 {{ parent.main_guardian_name }} , {{ parent.secondary_guardian_name }}
+                  </option>
+
+            </select>
+          </div>
+        </div>
+        
          <div class="flex flex-wrap -mx-3 mb-6">
           <div class="w-full  px-3 mb-6 md:mb-0">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="subject">
@@ -55,11 +70,13 @@ export default {
   props: {
     errors: Object,
     users: Array,
+    parents:Object
   },
    setup () {
     const form = useForm({
       subject: null,
       content: null,
+      parent_id:[]
     })
     return { form }
    },
